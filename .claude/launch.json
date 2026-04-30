@@ -2,11 +2,11 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "factura-saas-frontend",
+      "name": "erp-frontend",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 5173,
-      "cwd": "/c/factura-saas/frontend"
+      "cwd": "/c/ERP/frontend"
     }
   ]
 }

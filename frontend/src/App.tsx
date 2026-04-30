@@ -17,6 +17,11 @@ import ConfiguracionPage from '@/pages/ConfiguracionPage'
 import ProductosPage from '@/pages/ProductosPage'
 import MisEmpresasPage from '@/pages/MisEmpresasPage'
 import ImportacionPage from '@/pages/ImportacionPage'
+import ProveedoresPage from '@/pages/ProveedoresPage'
+import InventarioPage from '@/pages/InventarioPage'
+import ComprasPage from '@/pages/ComprasPage'
+import TesoreriaPage from '@/pages/TesoreriaPage'
+import PresupuestosPage from '@/pages/PresupuestosPage'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const token = useAuthStore((s) => s.token)
@@ -32,14 +37,20 @@ export default function App() {
       <Route path="/onboarding" element={<PrivateRoute><OnboardingPage /></PrivateRoute>} />
       <Route path="/app" element={<PrivateRoute><Layout /></PrivateRoute>}>
         <Route index element={<Navigate to="/app/dashboard" replace />} />
-        <Route path="dashboard"    element={<DashboardPage />} />
-        <Route path="comprobantes" element={<ComprobantesPage />} />
+        <Route path="dashboard"     element={<DashboardPage />} />
+        <Route path="presupuestos"  element={<PresupuestosPage />} />
+        <Route path="comprobantes"  element={<ComprobantesPage />} />
         <Route path="comprobantes/nuevo" element={<NuevoComprobantePage />} />
-        <Route path="recibidos"    element={<RecibidosPage />} />
-        <Route path="clientes"     element={<ClientesPage />} />
-        <Route path="productos"    element={<ProductosPage />} />
-        <Route path="kpis"         element={<KPIsPage />} />
-        <Route path="calendario"   element={<CalendarioPage />} />
+        <Route path="recibidos"     element={<RecibidosPage />} />
+        <Route path="clientes"      element={<ClientesPage />} />
+        <Route path="productos"     element={<ProductosPage />} />
+        <Route path="proveedores"   element={<ProveedoresPage />} />
+        <Route path="compras"       element={<ComprasPage />} />
+        <Route path="inventario"    element={<InventarioPage />} />
+        <Route path="remitos"       element={<InventarioPage />} />
+        <Route path="tesoreria"     element={<TesoreriaPage />} />
+        <Route path="kpis"          element={<KPIsPage />} />
+        <Route path="calendario"    element={<CalendarioPage />} />
         <Route path="reportes"      element={<ReportesPage />} />
         <Route path="configuracion" element={<ConfiguracionPage />} />
         <Route path="empresas"      element={<MisEmpresasPage />} />

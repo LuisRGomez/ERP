@@ -1,19 +1,41 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
-  LayoutDashboard, FileText, FileInput, Users,
+  LayoutDashboard, FileText, FileInput, Users, Building2,
   BarChart3, Calendar, PieChart, Settings, Receipt, LogOut,
+  Package, ShoppingCart, Landmark, FileCheck, Truck,
 } from 'lucide-react'
 import clsx from 'clsx'
 import { useAuthStore } from '@/stores/authStore'
 
 const navGroups = [
   {
-    label: 'GESTIÓN',
+    label: 'VENTAS',
     links: [
-      { to: '/app/dashboard',    icon: LayoutDashboard, label: 'Dashboard' },
-      { to: '/app/comprobantes', icon: FileText,         label: 'Emitidos' },
-      { to: '/app/recibidos',    icon: FileInput,        label: 'Recibidos' },
-      { to: '/app/clientes',     icon: Users,            label: 'Clientes' },
+      { to: '/app/dashboard',     icon: LayoutDashboard, label: 'Dashboard' },
+      { to: '/app/presupuestos',  icon: FileCheck,       label: 'Presupuestos' },
+      { to: '/app/comprobantes',  icon: FileText,        label: 'Emitidos' },
+      { to: '/app/clientes',      icon: Users,           label: 'Clientes' },
+    ],
+  },
+  {
+    label: 'COMPRAS',
+    links: [
+      { to: '/app/compras',      icon: ShoppingCart, label: 'Facturas recibidas' },
+      { to: '/app/proveedores',  icon: Building2,    label: 'Proveedores' },
+    ],
+  },
+  {
+    label: 'OPERACIONES',
+    links: [
+      { to: '/app/inventario', icon: Package,   label: 'Inventario' },
+      { to: '/app/remitos',    icon: Truck,     label: 'Remitos' },
+    ],
+  },
+  {
+    label: 'FINANZAS',
+    links: [
+      { to: '/app/tesoreria', icon: Landmark, label: 'Tesorería' },
+      { to: '/app/recibidos', icon: FileInput, label: 'Comprobantes' },
     ],
   },
   {
@@ -39,10 +61,10 @@ export default function Sidebar() {
     <aside className="w-60 bg-slate-900 flex flex-col h-full">
       <div className="h-16 flex items-center px-5 border-b border-slate-800">
         <Receipt size={22} className="text-brand-400 mr-2.5 shrink-0" />
-        <span className="text-white font-bold text-lg tracking-tight">FacturaSaaS</span>
+        <span className="text-white font-bold text-lg tracking-tight">ERP</span>
       </div>
 
-      <nav className="flex-1 px-3 py-5 space-y-6 overflow-y-auto">
+      <nav className="flex-1 px-3 py-5 space-y-5 overflow-y-auto">
         {navGroups.map((group) => (
           <div key={group.label}>
             <p className="text-slate-500 text-[10px] font-semibold uppercase tracking-widest px-3 mb-2">
