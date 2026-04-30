@@ -1,0 +1,12 @@
+from fastapi import APIRouter
+from app.api.v1.endpoints import auth, empresas, clientes, comprobantes, reportes, arca, documentos
+
+api_router = APIRouter()
+
+api_router.include_router(auth.router, prefix="/auth", tags=["auth"])
+api_router.include_router(empresas.router, prefix="/empresas", tags=["empresas"])
+api_router.include_router(clientes.router, prefix="/clientes", tags=["clientes"])
+api_router.include_router(comprobantes.router, prefix="/comprobantes", tags=["comprobantes"])
+api_router.include_router(reportes.router, prefix="/reportes", tags=["reportes"])
+api_router.include_router(arca.router, prefix="/arca", tags=["arca"])
+api_router.include_router(documentos.router, prefix="/documentos", tags=["documentos"])

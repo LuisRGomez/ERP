@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.next/
+.nuxt/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Certs / keys (NUNCA commitear)
+*.key
+*.crt
+*.pem
+*.p12
+*.pfx
+certs/
+
+# Storage
+storage/
+*.pdf
+
+# DB
+*.sqlite
+*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
