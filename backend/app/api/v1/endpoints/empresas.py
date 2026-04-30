@@ -1,7 +1,8 @@
+from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from typing import Optional, List
 from app.db.session import get_db
 from app.models.empresa import Empresa, CondicionIVA
@@ -45,8 +46,22 @@ class EmpresaOut(BaseModel):
     condicion_iva: str
     arca_habilitada: bool
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
+
+    @field_validator("id", mode="before")
+    @classmethod
+    def coerce_uuid(cls, v):
+        return str(v)
+
+    @field_validator("condicion_iva", mode="before")
+    @classmethod
+    def coerce_enum(cls, v):
+        return v.value if hasattr(v, "value") else str(v)
+
+    @field_validator("arca_habilitada", mode="before")
+    @classmethod
+    def coerce_bool(cls, v):
+        return bool(v) if v is not None else False
 
 
 @router.get("/", response_model=List[EmpresaOut])
