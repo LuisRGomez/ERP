@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard, FileText, FileInput, Users, Building2,
-  BarChart3, Calendar, PieChart, Settings, Receipt, LogOut,
+  BarChart3, Calendar, PieChart, Settings, Zap, LogOut,
   Package, ShoppingCart, Landmark, FileCheck, Truck,
   BookOpen, UserRound,
 } from 'lucide-react'
@@ -10,7 +10,7 @@ import { useAuthStore } from '@/stores/authStore'
 
 const navGroups = [
   {
-    label: 'VENTAS',
+    label: 'Ventas',
     links: [
       { to: '/app/dashboard',     icon: LayoutDashboard, label: 'Dashboard' },
       { to: '/app/presupuestos',  icon: FileCheck,       label: 'Presupuestos' },
@@ -19,35 +19,35 @@ const navGroups = [
     ],
   },
   {
-    label: 'COMPRAS',
+    label: 'Compras',
     links: [
       { to: '/app/compras',      icon: ShoppingCart, label: 'Facturas recibidas' },
       { to: '/app/proveedores',  icon: Building2,    label: 'Proveedores' },
     ],
   },
   {
-    label: 'OPERACIONES',
+    label: 'Operaciones',
     links: [
-      { to: '/app/inventario', icon: Package,   label: 'Inventario' },
-      { to: '/app/remitos',    icon: Truck,     label: 'Remitos' },
+      { to: '/app/inventario', icon: Package, label: 'Inventario' },
+      { to: '/app/remitos',    icon: Truck,   label: 'Remitos' },
     ],
   },
   {
-    label: 'FINANZAS',
+    label: 'Finanzas',
     links: [
-      { to: '/app/tesoreria',     icon: Landmark,  label: 'Tesorería' },
-      { to: '/app/contabilidad',  icon: BookOpen,  label: 'Contabilidad' },
-      { to: '/app/recibidos',     icon: FileInput, label: 'Comprobantes' },
+      { to: '/app/tesoreria',    icon: Landmark,  label: 'Tesorería' },
+      { to: '/app/contabilidad', icon: BookOpen,  label: 'Contabilidad' },
+      { to: '/app/recibidos',    icon: FileInput, label: 'Comprobantes' },
     ],
   },
   {
-    label: 'PERSONAS',
+    label: 'Personas',
     links: [
       { to: '/app/rrhh', icon: UserRound, label: 'RRHH' },
     ],
   },
   {
-    label: 'ANÁLISIS',
+    label: 'Análisis',
     links: [
       { to: '/app/kpis',       icon: PieChart,  label: 'KPIs' },
       { to: '/app/calendario', icon: Calendar,  label: 'Calendario' },
@@ -60,22 +60,23 @@ export default function Sidebar() {
   const logout = useAuthStore((s) => s.logout)
   const navigate = useNavigate()
 
-  const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
-
   return (
-    <aside className="w-60 bg-slate-900 flex flex-col h-full">
-      <div className="h-16 flex items-center px-5 border-b border-slate-800">
-        <Receipt size={22} className="text-brand-400 mr-2.5 shrink-0" />
-        <span className="text-white font-bold text-lg tracking-tight">ERP</span>
+    <aside className="w-[220px] shrink-0 bg-[#0f1117] flex flex-col h-screen sticky top-0">
+      {/* Logo */}
+      <div className="h-16 flex items-center px-5 shrink-0">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 bg-brand-600 rounded-lg flex items-center justify-center shadow-lg shadow-brand-900/40">
+            <Zap size={14} className="text-white" />
+          </div>
+          <span className="text-white font-bold text-base tracking-tight">ERP</span>
+        </div>
       </div>
 
-      <nav className="flex-1 px-3 py-5 space-y-5 overflow-y-auto">
+      {/* Nav */}
+      <nav className="flex-1 px-3 py-2 overflow-y-auto space-y-6">
         {navGroups.map((group) => (
           <div key={group.label}>
-            <p className="text-slate-500 text-[10px] font-semibold uppercase tracking-widest px-3 mb-2">
+            <p className="text-[10px] font-semibold text-slate-600 uppercase tracking-[0.1em] px-3 mb-1.5">
               {group.label}
             </p>
             <div className="space-y-0.5">
@@ -85,15 +86,19 @@ export default function Sidebar() {
                   to={to}
                   className={({ isActive }) =>
                     clsx(
-                      'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all',
+                      'group flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-150',
                       isActive
-                        ? 'bg-brand-600 text-white shadow-sm'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800',
+                        ? 'bg-brand-600/20 text-brand-400'
+                        : 'text-slate-500 hover:text-slate-200 hover:bg-white/5',
                     )
                   }
                 >
-                  <Icon size={16} />
-                  {label}
+                  {({ isActive }) => (
+                    <>
+                      <Icon size={15} className={clsx('shrink-0 transition-colors', isActive ? 'text-brand-400' : 'text-slate-600 group-hover:text-slate-300')} />
+                      {label}
+                    </>
+                  )}
                 </NavLink>
               ))}
             </div>
@@ -101,24 +106,25 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="px-3 py-4 border-t border-slate-800 space-y-0.5">
+      {/* Bottom */}
+      <div className="px-3 py-3 border-t border-white/5 space-y-0.5 shrink-0">
         <NavLink
           to="/app/configuracion"
           className={({ isActive }) =>
             clsx(
-              'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all',
-              isActive ? 'bg-brand-600 text-white' : 'text-slate-400 hover:text-white hover:bg-slate-800',
+              'flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] font-medium transition-all',
+              isActive ? 'bg-white/10 text-white' : 'text-slate-500 hover:text-slate-200 hover:bg-white/5',
             )
           }
         >
-          <Settings size={16} />
+          <Settings size={15} />
           Configuración
         </NavLink>
         <button
-          onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-red-400 hover:bg-slate-800 transition-all"
+          onClick={() => { logout(); navigate('/login') }}
+          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] font-medium text-slate-500 hover:text-red-400 hover:bg-white/5 transition-all"
         >
-          <LogOut size={16} />
+          <LogOut size={15} />
           Cerrar sesión
         </button>
       </div>
