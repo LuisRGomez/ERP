@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Numeric, Boolean, DateTime, ForeignKey, func, Enum, Integer, Text
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+﻿from sqlalchemy import Column, String, Numeric, Boolean, DateTime, ForeignKey, func, Enum, Integer, Text
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import JSON
 from sqlalchemy.orm import relationship
 import uuid
 import enum
@@ -62,3 +63,4 @@ class LineaAsiento(Base):
 
     asiento = relationship("Asiento", back_populates="lineas")
     cuenta = relationship("CuentaContable", back_populates="lineas")
+

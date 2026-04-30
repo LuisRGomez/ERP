@@ -1,13 +1,11 @@
 import { Outlet } from 'react-router-dom'
-import AppHeader from './AppHeader'
-import NavTabs from './NavTabs'
+import Sidebar from './Sidebar'
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <AppHeader />
-      <NavTabs />
-      <main className="flex-1 overflow-y-auto px-6 py-5">
+    <div className="min-h-screen bg-gray-50 flex">
+      <Sidebar />
+      <main className="flex-1 overflow-y-auto">
         <Outlet />
       </main>
     </div>

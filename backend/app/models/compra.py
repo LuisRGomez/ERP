@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Numeric, Boolean, DateTime, Date, ForeignKey, func, Enum, Integer, Text
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+﻿from sqlalchemy import Column, String, Numeric, Boolean, DateTime, Date, ForeignKey, func, Enum, Integer, Text
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import JSON
 from sqlalchemy.orm import relationship
 import uuid
 import enum
@@ -40,9 +41,9 @@ class Compra(Base):
     ret_iva = Column(Numeric(15, 2), default=0)
     percepciones = Column(Numeric(15, 2), default=0)
 
-    # Items y alícuotas
-    items = Column(JSONB, default=list)
-    alicuotas_iva = Column(JSONB, default=list)
+    # Items y alÃ­cuotas
+    items = Column(JSON, default=list)
+    alicuotas_iva = Column(JSON, default=list)
 
     condicion_pago = Column(String(50))
     observaciones = Column(Text)
@@ -55,3 +56,4 @@ class Compra(Base):
     empresa = relationship("Empresa", back_populates="compras")
     proveedor = relationship("Proveedor", back_populates="compras")
     pagos = relationship("Pago", back_populates="compra")
+

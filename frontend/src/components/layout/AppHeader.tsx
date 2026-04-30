@@ -31,7 +31,7 @@ export default function AppHeader() {
         <div className="w-8 h-8 bg-white/15 rounded-lg flex items-center justify-center">
           <Receipt size={18} className="text-white" />
         </div>
-        <span className="text-white font-bold text-lg tracking-tight">FacturaSaaS</span>
+        <span className="text-white font-bold text-lg tracking-tight">ERP</span>
       </div>
 
       {/* Empresa selector */}

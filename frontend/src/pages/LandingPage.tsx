@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { CheckCircle, Zap, Shield, BarChart2 } from 'lucide-react'
 
 const features = [
-  { icon: Zap,       title: 'Automatización total',   desc: 'Emitís facturas automáticamente desde tus ventas, sin intervención manual.' },
-  { icon: Shield,    title: 'Siempre actualizado',     desc: 'Nos encargamos de los cambios de ARCA para que nunca tengas problemas.' },
-  { icon: BarChart2, title: 'Analytics en tiempo real',desc: 'Dashboard con métricas de facturación, clientes y períodos.' },
-  { icon: CheckCircle, title: 'Multi-empresa',         desc: 'Gestioná múltiples CUITs desde una sola cuenta. Ideal para contadores.' },
+  { icon: Zap,       title: 'Automatización total',   desc: 'Facturación electrónica con ARCA, compras, pagos y cobros automatizados.' },
+  { icon: Shield,    title: 'Contabilidad integrada',  desc: 'Asientos automáticos desde ventas y compras. Plan de cuentas configurable.' },
+  { icon: BarChart2, title: 'Analytics en tiempo real',desc: 'Dashboard con métricas de facturación, stock, tesorería y rentabilidad.' },
+  { icon: CheckCircle, title: 'Multi-empresa',         desc: 'Gestioná múltiples empresas desde una sola cuenta. Ideal para contadores.' },
 ]
 
 export default function LandingPage() {
@@ -13,7 +13,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white">
       {/* Nav */}
       <nav className="border-b border-gray-100 px-6 h-16 flex items-center justify-between max-w-7xl mx-auto">
-        <span className="text-xl font-bold text-brand-600">FacturaSaaS</span>
+        <span className="text-xl font-bold text-brand-600">ERP</span>
         <div className="flex items-center gap-4">
           <Link to="/login" className="text-sm text-gray-600 hover:text-gray-900">Iniciar sesión</Link>
           <Link to="/register" className="text-sm bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition-colors">
@@ -25,10 +25,10 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="max-w-4xl mx-auto text-center px-6 py-24">
         <h1 className="text-5xl font-bold text-gray-900 leading-tight mb-6">
-          Facturá automáticamente<br />y sin errores
+          Gestioná tu empresa<br />desde un solo lugar
         </h1>
         <p className="text-xl text-gray-500 mb-10 max-w-2xl mx-auto">
-          Vos ocupate de vender. La facturación electrónica con ARCA, dejala en nuestras manos.
+          Ventas, compras, inventario, tesorería, contabilidad y RRHH. Todo integrado, todo en tiempo real.
         </p>
         <div className="flex items-center justify-center gap-4">
           <Link to="/register" className="bg-brand-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-brand-700 transition-colors">
@@ -59,14 +59,14 @@ export default function LandingPage() {
       {/* CTA */}
       <section className="py-20 px-6 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Empezar es simple</h2>
-        <p className="text-gray-500 mb-8">Creás tu cuenta, conectás tu CUIT con ARCA y en minutos estás facturando.</p>
+        <p className="text-gray-500 mb-8">Creás tu cuenta, configurás tu empresa y en minutos tenés tu ERP funcionando.</p>
         <Link to="/register" className="bg-brand-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-brand-700 transition-colors">
           Crear cuenta gratis
         </Link>
       </section>
 
       <footer className="border-t border-gray-100 py-8 text-center text-sm text-gray-400">
-        © 2026 FacturaSaaS · Todos los derechos reservados
+        © 2026 ERP · Todos los derechos reservados
       </footer>
     </div>
   )

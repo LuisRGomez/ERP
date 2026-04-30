@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Numeric, Boolean, DateTime, ForeignKey, func, Enum, Text
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+﻿from sqlalchemy import Column, String, Numeric, Boolean, DateTime, ForeignKey, func, Enum, Text
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import JSON
 from sqlalchemy.orm import relationship
 import uuid
 import enum
@@ -9,7 +10,7 @@ from app.db.base import Base
 class TipoCuenta(str, enum.Enum):
     banco = "BANCO"
     caja = "CAJA"
-    virtual = "VIRTUAL"   # MercadoPago, Ualá, etc.
+    virtual = "VIRTUAL"   # MercadoPago, UalÃ¡, etc.
 
 
 class TipoMovTesoria(str, enum.Enum):
@@ -97,3 +98,4 @@ class Pago(Base):
     empresa = relationship("Empresa", back_populates="pagos")
     proveedor = relationship("Proveedor")
     compra = relationship("Compra", back_populates="pagos")
+

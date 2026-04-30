@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Numeric, Boolean, DateTime, Date, ForeignKey, func, Enum, Integer, Text
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+﻿from sqlalchemy import Column, String, Numeric, Boolean, DateTime, Date, ForeignKey, func, Enum, Integer, Text
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import JSON
 from sqlalchemy.orm import relationship
 import uuid
 import enum
@@ -27,7 +28,7 @@ class Presupuesto(Base):
     fecha_vencimiento = Column(Date, nullable=True)
 
     # Items (mismo formato que comprobantes)
-    items = Column(JSONB, default=list)
+    items = Column(JSON, default=list)
     imp_neto = Column(Numeric(15, 2), default=0)
     imp_iva = Column(Numeric(15, 2), default=0)
     imp_total = Column(Numeric(15, 2), default=0)
@@ -59,13 +60,13 @@ class Remito(Base):
 
     numero = Column(Integer)
     fecha = Column(DateTime(timezone=True), server_default=func.now())
-    items = Column(JSONB, default=list)
+    items = Column(JSON, default=list)
     deposito_origen = Column(String(100))
     domicilio_entrega = Column(String(500))
     transportista = Column(String(200))
     observaciones = Column(Text)
 
-    # Si está asociado a un comprobante
+    # Si estÃ¡ asociado a un comprobante
     comprobante_id = Column(UUID(as_uuid=True), ForeignKey("comprobantes.id"), nullable=True)
     pdf_path = Column(String, nullable=True)
     entregado = Column(Boolean, default=False)
@@ -74,3 +75,4 @@ class Remito(Base):
     empresa = relationship("Empresa", back_populates="remitos")
     cliente = relationship("Cliente")
     comprobante = relationship("Comprobante")
+

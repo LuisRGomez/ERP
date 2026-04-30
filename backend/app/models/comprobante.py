@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Numeric, Boolean, DateTime, Date, ForeignKey, func, Enum, Integer
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+﻿from sqlalchemy import Column, String, Numeric, Boolean, DateTime, Date, ForeignKey, func, Enum, Integer
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import JSON
 from sqlalchemy.orm import relationship
 import uuid
 import enum
@@ -39,7 +40,7 @@ class Comprobante(Base):
     fecha = Column(DateTime(timezone=True))
     concepto = Column(Integer, default=2)  # 1=productos 2=servicios 3=ambos
 
-    # Período de servicio (obligatorio si concepto 2 o 3)
+    # PerÃ­odo de servicio (obligatorio si concepto 2 o 3)
     fch_serv_desde = Column(Date, nullable=True)
     fch_serv_hasta = Column(Date, nullable=True)
 
@@ -48,7 +49,7 @@ class Comprobante(Base):
     cbte_asoc_pto_vta = Column(Integer, nullable=True)
     cbte_asoc_nro = Column(Integer, nullable=True)
 
-    # Condición IVA receptor (obligatorio desde abril 2025)
+    # CondiciÃ³n IVA receptor (obligatorio desde abril 2025)
     # 1=RI, 4=Exento, 5=CF, 6=Monotributo
     condicion_iva_receptor_id = Column(Integer, nullable=True)
 
@@ -60,10 +61,10 @@ class Comprobante(Base):
     moneda = Column(String(3), default="PES")
     cotizacion = Column(Numeric(10, 4), default=1)
 
-    # Items y alícuotas desglosadas (JSON flexible)
-    items = Column(JSONB, default=list)
+    # Items y alÃ­cuotas desglosadas (JSON flexible)
+    items = Column(JSON, default=list)
     # [{alicuota: 21, base_imp: 1000.00, importe: 210.00}, ...]
-    alicuotas_iva = Column(JSONB, default=list)
+    alicuotas_iva = Column(JSON, default=list)
 
     # Referencia comercial
     condicion_pago = Column(String(50), nullable=True)
@@ -74,7 +75,7 @@ class Comprobante(Base):
     cae = Column(String(14))
     cae_vencimiento = Column(DateTime(timezone=True))
     estado = Column(Enum(EstadoComprobante), default=EstadoComprobante.borrador)
-    arca_response = Column(JSONB)
+    arca_response = Column(JSON)
 
     # PDF: pdf_path = generado por el sistema / uploaded_pdf_path = subido por el contador
     pdf_path = Column(String, nullable=True)
@@ -85,3 +86,4 @@ class Comprobante(Base):
 
     empresa = relationship("Empresa", back_populates="comprobantes")
     cliente = relationship("Cliente", back_populates="comprobantes")
+

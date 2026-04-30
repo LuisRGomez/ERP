@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Numeric, Boolean, DateTime, ForeignKey, func, Enum, Integer, Text
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+﻿from sqlalchemy import Column, String, Numeric, Boolean, DateTime, ForeignKey, func, Enum, Integer, Text
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import JSON
 from sqlalchemy.orm import relationship
 import uuid
 import enum
@@ -66,3 +67,4 @@ class Producto(Base):
 
     empresa = relationship("Empresa", back_populates="productos")
     movimientos_stock = relationship("MovimientoStock", back_populates="producto")
+

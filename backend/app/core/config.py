@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
-    DATABASE_URL: str
+    DATABASE_URL: str = "sqlite:///./erp.db"
     REDIS_URL: str = "redis://localhost:6379"
 
     AFIPSDK_ACCESS_TOKEN: str = ""
