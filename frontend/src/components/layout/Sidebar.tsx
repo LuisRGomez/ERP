@@ -3,6 +3,7 @@ import {
   LayoutDashboard, FileText, FileInput, Users, Building2,
   BarChart3, Calendar, PieChart, Settings, Receipt, LogOut,
   Package, ShoppingCart, Landmark, FileCheck, Truck,
+  BookOpen, UserRound,
 } from 'lucide-react'
 import clsx from 'clsx'
 import { useAuthStore } from '@/stores/authStore'
@@ -34,8 +35,15 @@ const navGroups = [
   {
     label: 'FINANZAS',
     links: [
-      { to: '/app/tesoreria', icon: Landmark, label: 'Tesorería' },
-      { to: '/app/recibidos', icon: FileInput, label: 'Comprobantes' },
+      { to: '/app/tesoreria',     icon: Landmark,  label: 'Tesorería' },
+      { to: '/app/contabilidad',  icon: BookOpen,  label: 'Contabilidad' },
+      { to: '/app/recibidos',     icon: FileInput, label: 'Comprobantes' },
+    ],
+  },
+  {
+    label: 'PERSONAS',
+    links: [
+      { to: '/app/rrhh', icon: UserRound, label: 'RRHH' },
     ],
   },
   {

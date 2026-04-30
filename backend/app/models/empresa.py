@@ -43,3 +43,6 @@ class Empresa(Base):
     pagos = relationship("Pago", back_populates="empresa")
     presupuestos = relationship("Presupuesto", back_populates="empresa")
     remitos = relationship("Remito", back_populates="empresa")
+    cuentas_contables = relationship("CuentaContable", back_populates="empresa")
+    asientos = relationship("Asiento", back_populates="empresa")
+    empleados = relationship("Empleado", back_populates="empresa")

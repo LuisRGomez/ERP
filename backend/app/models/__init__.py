@@ -7,3 +7,5 @@ from app.models.inventario import Producto, MovimientoStock, Deposito
 from app.models.compra import Compra
 from app.models.tesoreria import CuentaBancaria, MovimientoTesoreria, Cobro, Pago
 from app.models.presupuesto import Presupuesto, Remito
+from app.models.contabilidad import CuentaContable, Asiento, LineaAsiento
+from app.models.rrhh import Empleado

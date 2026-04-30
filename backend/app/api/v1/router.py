@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from app.api.v1.endpoints import (
     auth, empresas, clientes, comprobantes, reportes, arca, documentos,
     proveedores, inventario, compras, tesoreria, presupuestos,
+    contabilidad, rrhh,
 )
 
 api_router = APIRouter()
@@ -18,3 +19,5 @@ api_router.include_router(inventario.router,    prefix="/inventario",    tags=["
 api_router.include_router(compras.router,       prefix="/compras",       tags=["compras"])
 api_router.include_router(tesoreria.router,     prefix="/tesoreria",     tags=["tesoreria"])
 api_router.include_router(presupuestos.router,  prefix="/presupuestos",  tags=["presupuestos"])
+api_router.include_router(contabilidad.router,  prefix="/contabilidad",  tags=["contabilidad"])
+api_router.include_router(rrhh.router,          prefix="/rrhh",          tags=["rrhh"])

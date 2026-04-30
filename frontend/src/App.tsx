@@ -22,6 +22,8 @@ import InventarioPage from '@/pages/InventarioPage'
 import ComprasPage from '@/pages/ComprasPage'
 import TesoreriaPage from '@/pages/TesoreriaPage'
 import PresupuestosPage from '@/pages/PresupuestosPage'
+import ContabilidadPage from '@/pages/ContabilidadPage'
+import RRHHPage from '@/pages/RRHHPage'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const token = useAuthStore((s) => s.token)
@@ -49,6 +51,8 @@ export default function App() {
         <Route path="inventario"    element={<InventarioPage />} />
         <Route path="remitos"       element={<InventarioPage />} />
         <Route path="tesoreria"     element={<TesoreriaPage />} />
+        <Route path="contabilidad"  element={<ContabilidadPage />} />
+        <Route path="rrhh"          element={<RRHHPage />} />
         <Route path="kpis"          element={<KPIsPage />} />
         <Route path="calendario"    element={<CalendarioPage />} />
         <Route path="reportes"      element={<ReportesPage />} />
