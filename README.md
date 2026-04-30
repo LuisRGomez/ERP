@@ -22,10 +22,11 @@ ERP completo para Argentina: ventas, compras, inventario, tesorería, contabilid
 
 ## Stack
 
-- **Backend:** FastAPI + SQLAlchemy + SQLite (dev) / PostgreSQL (prod)
-- **Frontend:** React 18 + Vite + TypeScript + Tailwind CSS
-- **Auth:** JWT (access + refresh tokens)
-- **PDF:** WeasyPrint (comprobantes y remitos)
+- **Backend:** FastAPI 0.115 + SQLAlchemy 2.0 + SQLite (dev) / PostgreSQL 16 (prod)
+- **Frontend:** React 18.3 + Vite 5.4 + TypeScript 5.6 + Tailwind 3.4
+- **Auth:** JWT — python-jose 3.3 + passlib/bcrypt
+- **PDF:** WeasyPrint 62.3
+- **Node:** 20-alpine · **Python:** 3.11-slim
 
 ---
 
@@ -33,7 +34,7 @@ ERP completo para Argentina: ventas, compras, inventario, tesorería, contabilid
 
 ### Requisitos
 - Python 3.11+
-- Node.js 18+
+- Node.js 20+
 
 ### Backend
 ```bash
